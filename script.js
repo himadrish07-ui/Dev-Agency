@@ -47,6 +47,109 @@ document.addEventListener("DOMContentLoaded", () => {
             themeToggle.classList.add("btn-outline-secondary");
         }
     }
+    // 9.Mobile menu auto close
+    const navbarCollapse = document.getElementById("navbarLinks");
+
+    if (navbarCollapse) {
+        navbarCollapse.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                }
+            });
+        });
+    }
+    // 10. Contact form
+    const contactForm = document.getElementById("contact-form");
+    const contactName = document.getElementById("contact-name");
+    const contactEmail = document.getElementById("contact-email");
+    const contactFile = document.getElementById("contact-file");
+    const contactMessage = document.getElementById("contact-message");
+    const contactSubmit = document.getElementById("contact-submit");
+    const contactSuccess = document.getElementById("contact-success");
+
+    if (contactForm) {
+        const validateName = () => {
+            const isValid = contactName.value.trim().length >= 2;
+            toggleValid(contactName, isValid);
+            return isValid;
+        };
+
+        const validateEmail = () => {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const isValid = emailRegex.test(contactEmail.value.trim());
+            toggleValid(contactEmail, isValid);
+            return isValid;
+        };
+
+        const validateFile = () => {
+            const files = contactFile.files;
+            const isValid = files.length > 0 &&
+                Array.from(files).every(f => f.name.toLowerCase().endsWith(".pdf"));
+            toggleValid(contactFile, isValid);
+            return isValid;
+        };
+
+        const validateMessage = () => {
+            const isValid = contactMessage.value.trim().length >= 10;
+            toggleValid(contactMessage, isValid);
+            return isValid;
+        };
+
+        // Correct toggleValid: valid -> "is-valid", invalid -> "is-invalid"
+        function toggleValid(input, isValid) {
+            if (isValid) {
+                input.classList.remove("is-invalid");
+                input.classList.add("is-valid");
+            } else {
+                input.classList.remove("is-valid");
+                input.classList.add("is-invalid");
+            }
+        }
+
+        // Validation listeners
+        contactName.addEventListener("input", validateName);
+        contactName.addEventListener("blur", validateName);
+
+
+        contactEmail.addEventListener("input", validateEmail);
+        contactEmail.addEventListener("blur", validateEmail);
+
+        contactFile.addEventListener("change", validateFile);
+
+        contactMessage.addEventListener("input", validateMessage);
+        contactMessage.addEventListener("blur", validateMessage);
+
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isFileValid = validateFile();
+            const isMessageValid = validateMessage();
+
+            if (isNameValid && isEmailValid && isFileValid && isMessageValid) {
+                contactSubmit.textContent = "Sent!";
+                contactSubmit.disabled = true;
+                contactSuccess.classList.remove("d-none");
+
+                contactForm.reset();
+                // Remove validation classes after reset
+                [contactName, contactEmail, contactFile, contactMessage].forEach((el) => {
+                    el.classList.remove("is-valid", "is-invalid");
+                });
+
+                setTimeout(() => {
+                    contactSubmit.textContent = "Send Message";
+                    contactSubmit.disabled = false;
+                    contactSuccess.classList.add("d-none");
+                }, 3000);
+            }
+        });
+    }
+
+
 });
 // .addEventListener("DOMContentLoaded", ...) — registers a function to run once the browser has finished parsing all the HTML and built the DOM tree (but doesn't necessarily wait for images/CSS to fully load).
 // This is critical: if your script ran immediately when the <script> tag is reached, document.getElementById("theme-toggle") would return null because that button doesn't exist in the DOM yet (it comes later in the HTML).
