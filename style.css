@@ -70,3 +70,159 @@
 :root[data-theme="dark"] .navbar-toggler:focus {
     box-shadow: 0 0 0 3px rgba(245, 245, 247, 0.2);
 }
+/* Global Styles */
+html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    color: var(--text-color) !important;
+}
+
+/* Navbar Custom Styles */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+:root[data-theme="dark"] .navbar {
+    background-color: rgba(15, 15, 21, 0.8) !important;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary) !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg,
+            rgba(83, 74, 183, 0.1),
+            rgba(55, 138, 221, 0.1));
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-section h1 {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--info));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-section h2 {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Section BackGrounds */
+.team-section {
+    padding: 80px 0;
+    background-color: var(--bg-surface);
+}
+
+.showcase-section {
+    padding: 80px 0;
+    background-color: var(--bg-color);
+}
+
+.contact-section {
+    padding: 80px 0;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Cards Override for Dark Mode */
+.card {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 18px -3px var(--hover-shadow) !important;
+}
+
+/* Button Overrides */
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.btn-primary:hover {
+    background-color: color-mix(in oklab, var(--primary) 85%, black) !important;
+    border-color: color-mix(in oklab, var(--primary) 85%, black) !important;
+}
+
+/* Form Controls */
+.form-control {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.form-control:focus {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(83, 74, 183, 0.2) !important;
+}
+
+:root[data-theme="dark"] .form-control::placeholder {
+    color: var(--text-muted-dark);
+}
+
+
+#contact-file::file-selector-button,
+#contact-file::-webkit-file-upload-button {
+    color: rgb(255, 255, 255) !important;
+    background-color: var(--primary) !important;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
