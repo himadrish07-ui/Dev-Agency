@@ -1,19 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 :root {
-    /* Spaces */
-    --space-4: 4px;
-    --space-8: 8px;
-    --space-12: 12px;
-    --space-16: 16px;
-    --space-24: 24px;
-    --space-32: 32px;
-    --space-48: 48px;
-
-    --weight-normal: 400;
-    --weight-medium: 500;
-    --weight-bold: 700;
-
     /* Brand colors */
     --primary: rgb(82, 73, 182);
     --success: rgb(29, 158, 117);
