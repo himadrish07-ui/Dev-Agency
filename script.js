@@ -148,6 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    // Current Year in the Footer
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
 });

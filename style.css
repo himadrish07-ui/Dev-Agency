@@ -226,3 +226,34 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
 }
+
+/* Style for btn-outline */
+.btn-outline {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Padding for project-cards */
+.project-card {
+    padding: 24px;
+    border-radius: 12px;
+}
+
+/* Style for Footer */
+.footer {
+    padding: 40px 0;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
+}
