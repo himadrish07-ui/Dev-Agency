@@ -1,82 +1,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
+/* ── Design Tokens ──────────────────────────────────────────────────────── */
 :root {
     /* Brand colors */
     --primary: rgb(82, 73, 182);
     --success: rgb(29, 158, 117);
-    --danger: rgb(226, 75, 74);
+    --danger:  rgb(226, 75, 74);
     --warning: rgb(239, 159, 39);
-    --info: rgb(55, 138, 221);
+    --info:    rgb(55, 138, 221);
 
     /* Shared values */
     --radius-pill: 20px;
-    --transition: all 0.2s ease;
+    --transition:  all 0.2s ease;
 
     /* Light mode palette */
-    --bg-color-light: rgb(255, 255, 255);
+    --bg-color-light:   rgb(255, 255, 255);
     --bg-surface-light: rgb(247, 247, 245);
-    --bg-card-light: rgb(255, 255, 255);
+    --bg-card-light:    rgb(255, 255, 255);
     --text-color-light: rgb(26, 26, 26);
     --text-muted-light: rgb(102, 102, 102);
     --border-color-light: rgb(224, 224, 224);
     --hover-shadow-light: rgba(96, 96, 96, 0.7);
 
     /* Dark mode palette */
-    --bg-color-dark: rgb(15, 15, 21);
+    --bg-color-dark:   rgb(15, 15, 21);
     --bg-surface-dark: rgb(22, 22, 34);
-    --bg-card-dark: rgb(30, 30, 45);
+    --bg-card-dark:    rgb(30, 30, 45);
     --text-color-dark: rgb(245, 245, 247);
     --text-muted-dark: rgb(160, 160, 171);
     --border-color-dark: rgb(45, 45, 61);
     --hover-shadow-dark: rgba(156, 103, 227, 0.7);
 
     /* Active theme variables — default to light */
-    --bg-color: var(--bg-color-light);
-    --bg-surface: var(--bg-surface-light);
-    --bg-card: var(--bg-card-light);
-    --text-color: var(--text-color-light);
-    --text-muted: var(--text-muted-light);
+    --bg-color:    var(--bg-color-light);
+    --bg-surface:  var(--bg-surface-light);
+    --bg-card:     var(--bg-card-light);
+    --text-color:  var(--text-color-light);
+    --text-muted:  var(--text-muted-light);
     --border-color: var(--border-color-light);
     --hover-shadow: var(--hover-shadow-light);
 }
 
-/* Dark Mode Roots Override */
+/* ── Dark Mode: Single Consolidated Override Block ──────────────────────── */
+/* FIX: All dark-mode overrides are now in ONE block instead of two.         */
+/* FIX: Brand colors, component overrides, and Bootstrap vars all together.  */
 :root[data-theme="dark"] {
-    --bg-color: var(--bg-color-dark);
-    --bg-surface: var(--bg-surface-dark);
-    --bg-card: var(--bg-card-dark);
-    --text-color: var(--text-color-dark);
-    --text-muted: var(--text-muted-dark);
+    /* Active theme remapping */
+    --bg-color:    var(--bg-color-dark);
+    --bg-surface:  var(--bg-surface-dark);
+    --bg-card:     var(--bg-card-dark);
+    --text-color:  var(--text-color-dark);
+    --text-muted:  var(--text-muted-dark);
     --border-color: var(--border-color-dark);
     --hover-shadow: var(--hover-shadow-dark);
 
-    /* Overriding Bootstrap Dark Mode Variables */
-    --bs-body-color: var(--text-color-dark);
-    --bs-body-bg: var(--bg-color-dark);
+    /* Muted brand colors for dark mode */
+    --primary: rgb(157, 153, 198);
+    --success: rgb(132, 165, 150);
+    --danger:  rgb(190, 137, 137);
+    --warning: rgb(190, 158, 109);
+    --info:    rgb(126, 157, 185);
+
+    /* Bootstrap variable overrides */
+    --bs-body-color:      var(--text-color-dark);
+    --bs-body-bg:         var(--bg-color-dark);
     --bs-secondary-color: var(--text-muted-dark);
-    --bs-border-color: var(--border-color-dark);
-    --bs-emphasis-color: var(--text-color-dark);
+    --bs-border-color:    var(--border-color-dark);
+    --bs-emphasis-color:  var(--text-color-dark);
 }
 
-/* Hamburger button - dark mode */
-:root[data-theme="dark"] .navbar-toggler {
-    border-color: var(--border-color-dark);
-}
-
-:root[data-theme="dark"] .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(245, 245, 247, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-:root[data-theme="dark"] .navbar-toggler:focus {
-    box-shadow: 0 0 0 3px rgba(245, 245, 247, 0.2);
-}
-/* Global Styles */
+/* ── Global Styles ──────────────────────────────────────────────────────── */
 html {
     font-family: 'Inter', system-ui, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     scroll-behavior: smooth;
-    transition: var(--bg-color) 0.2s ease, color 0.2s ease;
+    /* FIX: `transition` takes a property NAME, not a CSS variable value.    */
+    /* Original: `transition: var(--bg-color) 0.2s ease` — invalid CSS.     */
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 body {
@@ -87,7 +88,7 @@ body {
     color: var(--text-color) !important;
 }
 
-/* Navbar Custom Styles */
+/* ── Navbar ─────────────────────────────────────────────────────────────── */
 .navbar {
     background-color: rgba(255, 255, 255, 0.8) !important;
     backdrop-filter: blur(12px);
@@ -108,6 +109,10 @@ body {
     gap: 8px;
 }
 
+:root[data-theme="dark"] .navbar-brand {
+    color: var(--text-color) !important;
+}
+
 .nav-link {
     color: var(--text-color) !important;
     font-weight: 500;
@@ -117,7 +122,20 @@ body {
     color: var(--primary) !important;
 }
 
-/* Light/dark theme toggle */
+/* Hamburger — dark mode */
+:root[data-theme="dark"] .navbar-toggler {
+    border-color: var(--border-color-dark);
+}
+
+:root[data-theme="dark"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(245, 245, 247, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+:root[data-theme="dark"] .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(245, 245, 247, 0.2);
+}
+
+/* ── Theme Toggle Button ────────────────────────────────────────────────── */
 .theme-toggle {
     display: inline-flex;
     align-items: center;
@@ -154,6 +172,12 @@ body {
     text-align: center;
 }
 
+:root[data-theme="dark"] .theme-toggle:hover {
+    color: var(--text-color);
+    border-color: rgb(78, 78, 78);
+    transform: none;
+}
+
 @media (max-width: 575.98px) {
     .theme-toggle-item {
         margin-top: 8px;
@@ -161,32 +185,40 @@ body {
     }
 }
 
-/* Hero Section */
+/* ── Hero Section ───────────────────────────────────────────────────────── */
 .hero-section {
     padding: 80px 0;
     background: linear-gradient(135deg,
-            rgba(83, 74, 183, 0.1),
-            rgba(55, 138, 221, 0.1));
+        rgba(83, 74, 183, 0.1),
+        rgba(55, 138, 221, 0.1));
     border-bottom: 1px solid var(--border-color);
 }
 
 .hero-section h1 {
     font-weight: 700;
     background: linear-gradient(135deg, var(--primary), var(--info));
+    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.hero-section h2 {
-    font-weight: 600;
-    color: var(--text-color);
+:root[data-theme="dark"] .hero-section {
+    background: var(--bg-color);
 }
 
-/* Section BackGrounds */
+:root[data-theme="dark"] .hero-section h1 {
+    color: var(--text-color);
+    background: none;
+    -webkit-text-fill-color: currentColor;
+}
+
+/* ── Section Backgrounds ────────────────────────────────────────────────── */
 .team-section {
     padding: 80px 0;
     background-color: var(--bg-surface);
 }
 
+/* FIX: Removed inline style="padding: 48px 0" from HTML so this applies.   */
 .showcase-section {
     padding: 80px 0;
     background-color: var(--bg-color);
@@ -198,7 +230,7 @@ body {
     border-top: 1px solid var(--border-color);
 }
 
-/* Cards Override for Dark Mode */
+/* ── Cards ──────────────────────────────────────────────────────────────── */
 .card {
     background-color: var(--bg-card) !important;
     border-color: var(--border-color) !important;
@@ -211,7 +243,22 @@ body {
     box-shadow: 0 12px 18px -3px var(--hover-shadow) !important;
 }
 
-/* Button Overrides */
+:root[data-theme="dark"] .card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px var(--hover-shadow) !important;
+}
+
+/* ── Project Cards ──────────────────────────────────────────────────────── */
+.project-card {
+    padding: 24px;
+    border-radius: 12px;
+}
+
+:root[data-theme="dark"] .project-card {
+    border-radius: 8px;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────── */
 .btn-primary {
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
@@ -219,10 +266,54 @@ body {
 
 .btn-primary:hover {
     background-color: color-mix(in oklab, var(--primary) 85%, black) !important;
-    border-color: color-mix(in oklab, var(--primary) 85%, black) !important;
+    border-color:     color-mix(in oklab, var(--primary) 85%, black) !important;
 }
 
-/* Form Controls */
+:root[data-theme="dark"] .btn-primary {
+    background-color: rgb(91, 87, 132) !important;
+    border-color:     rgb(91, 87, 132) !important;
+}
+
+:root[data-theme="dark"] .btn-primary:hover {
+    background-color: rgb(104, 100, 147) !important;
+    border-color:     rgb(104, 100, 147) !important;
+}
+
+/* Custom outline button */
+.btn-outline {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* FIX: Added :focus-visible for keyboard accessibility — was missing.       */
+.btn-outline:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--primary) 40%, transparent);
+    outline-offset: 2px;
+}
+
+:root[data-theme="dark"] .btn-outline {
+    color: var(--text-color);
+    border: 1px solid rgb(76, 76, 76);
+}
+
+:root[data-theme="dark"] .btn-outline:hover {
+    color: var(--text-color);
+    background-color: rgb(42, 42, 42);
+    border-color: rgb(92, 92, 92);
+}
+
+/* ── Form Controls ──────────────────────────────────────────────────────── */
 .form-control {
     background-color: var(--bg-color) !important;
     color: var(--text-color) !important;
@@ -240,6 +331,10 @@ body {
     color: var(--text-muted-dark);
 }
 
+:root[data-theme="dark"] .form-control:focus {
+    border-color: rgb(105, 105, 105) !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08) !important;
+}
 
 #contact-file::file-selector-button,
 #contact-file::-webkit-file-upload-button {
@@ -251,8 +346,27 @@ body {
     cursor: pointer;
 }
 
+/* ── Badge ──────────────────────────────────────────────────────────────── */
+:root[data-theme="dark"] .badge.text-bg-primary {
+    color: rgb(218, 216, 232) !important;
+    background-color: rgb(55, 53, 72) !important;
+    font-weight: 500;
+}
 
-/* Scrollbar Styling */
+/* ── Avatar (initials fallback) ─────────────────────────────────────────── */
+:root[data-theme="dark"] .avatar {
+    background: rgb(55, 55, 55) !important;
+}
+
+/* ── GitHub Icon — CSS invert instead of JS src-swap ───────────────────── */
+/* FIX: Replaced JS-based src mutation with a pure CSS filter.               */
+/* This works for any .github-icon added to the DOM at any time, including   */
+/* dynamically rendered ones. JS no longer needs to touch these elements.    */
+:root[data-theme="dark"] .github-icon {
+    filter: invert(1);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -271,111 +385,14 @@ body {
     background: var(--primary);
 }
 
-/* Style for btn-outline */
-.btn-outline {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: rgb(90, 90, 90);
 }
 
-.btn-outline:hover {
-    background-color: var(--primary);
-    color: white;
-}
-
-/* Padding for project-cards */
-.project-card {
-    padding: 24px;
-    border-radius: 12px;
-}
-
-/* Style for Footer */
+/* ── Footer ─────────────────────────────────────────────────────────────── */
 .footer {
     padding: 40px 0;
     background-color: var(--bg-surface);
     border-top: 1px solid var(--border-color);
     color: var(--text-color);
-}
-
-/* Keep the dark theme quiet and neutral. */
-:root[data-theme="dark"] {
-    --primary: rgb(157, 153, 198);
-    --success: rgb(132, 165, 150);
-    --danger: rgb(190, 137, 137);
-    --warning: rgb(190, 158, 109);
-    --info: rgb(126, 157, 185);
-}
-
-:root[data-theme="dark"] .navbar-brand {
-    color: var(--text-color) !important;
-}
-
-:root[data-theme="dark"] .hero-section {
-    background: var(--bg-color);
-}
-
-:root[data-theme="dark"] .hero-section h1 {
-    color: var(--text-color);
-    background: none;
-    -webkit-text-fill-color: currentColor;
-}
-
-:root[data-theme="dark"] .card:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px var(--hover-shadow) !important;
-}
-
-:root[data-theme="dark"] .project-card {
-    border-radius: 8px;
-}
-
-:root[data-theme="dark"] .theme-toggle:hover {
-    color: var(--text-color);
-    border-color: rgb(78, 78, 78);
-    transform: none;
-}
-
-:root[data-theme="dark"] .btn-primary {
-    background-color: rgb(91, 87, 132) !important;
-    border-color: rgb(91, 87, 132) !important;
-}
-
-:root[data-theme="dark"] .btn-primary:hover {
-    background-color: rgb(104, 100, 147) !important;
-    border-color: rgb(104, 100, 147) !important;
-}
-
-:root[data-theme="dark"] .btn-outline {
-    color: var(--text-color);
-    border: 1px solid rgb(76, 76, 76);
-}
-
-:root[data-theme="dark"] .btn-outline:hover {
-    color: var(--text-color);
-    background-color: rgb(42, 42, 42);
-    border-color: rgb(92, 92, 92);
-}
-
-:root[data-theme="dark"] .form-control:focus {
-    border-color: rgb(105, 105, 105) !important;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08) !important;
-}
-
-:root[data-theme="dark"] .badge.text-bg-primary {
-    color: rgb(218, 216, 232) !important;
-    background-color: rgb(55, 53, 72) !important;
-    font-weight: 500;
-}
-
-:root[data-theme="dark"] .avatar {
-    background: rgb(55, 55, 55) !important;
-}
-
-:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-    background: rgb(90, 90, 90);
 }
