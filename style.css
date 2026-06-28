@@ -139,7 +139,7 @@ body {
 .theme-toggle:hover {
     color: var(--primary);
     border-color: var(--primary);
-    transform: translateY(-1px);
+    transform: scale(1.01) translateY(-3px);
 }
 
 .theme-toggle:focus-visible {
@@ -173,7 +173,6 @@ body {
 .hero-section h1 {
     font-weight: 700;
     background: linear-gradient(135deg, var(--primary), var(--info));
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
