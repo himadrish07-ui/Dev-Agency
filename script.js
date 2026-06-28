@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const isMessageValid = validateMessage();
 
             if (isNameValid && isEmailValid && isFileValid && isMessageValid) {
-                contactSubmit.textContent = "Sent!";
+                contactSubmit.textContent = "Details Valid";
                 contactSubmit.disabled = true;
                 contactSuccess.classList.remove("d-none");
 
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 setTimeout(() => {
-                    contactSubmit.textContent = "Send Message";
+                    contactSubmit.textContent = "Check Message";
                     contactSubmit.disabled = false;
                     contactSuccess.classList.add("d-none");
                 }, 3000);
