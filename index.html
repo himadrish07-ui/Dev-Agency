@@ -13,6 +13,7 @@
         if (saved) {
             document.querySelector('meta[name="color-scheme"]').content = saved;
             document.documentElement.setAttribute("data-theme", saved);
+            document.documentElement.setAttribute("data-bs-theme", saved);
         }
     </script>
 </head>
@@ -42,10 +43,11 @@
                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="#showcase">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" id="theme-toggle"
-                            aria-label="Toggle dark/light mode">
-                            <span id="theme-icon">&#9788;</span> <span id="theme-text">Light</span>
+                    <li class="nav-item theme-toggle-item">
+                        <button class="theme-toggle" id="theme-toggle" type="button"
+                            aria-label="Switch to dark mode" aria-pressed="false">
+                            <span id="theme-icon" class="theme-toggle-icon" aria-hidden="true">&#9790;</span>
+                            <span id="theme-text">Dark mode</span>
                         </button>
                     </li>
                 </ul>
@@ -95,7 +97,8 @@
               <h3 style="margin-bottom: 12px;">Expense Tracker</h3>
               <p>CRUD & LocalStorage. Track income and expenses with live calculations, transaction logs, and edit modals.</p>
             </div>
-            <a href="expenses/index.html" class="btn btn-outline" style="align-self: flex-start;">Open Expense Tracker &rarr;</a>
+            <a href="https://expense-tracker-eta-ashy-93.vercel.app/" class="btn btn-outline"
+              style="align-self: flex-start;" target="_blank" rel="noopener noreferrer">View Live Project &rarr;</a>
           </div>
 
           <!-- Project 4 -->

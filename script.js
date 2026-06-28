@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //8.The applyTheme() Function
     function applyTheme(theme) {
         currentTheme = theme;
-        let github = document.querySelectorAll(".github-icon");
+        const github = document.querySelectorAll(".github-icon");
         github.forEach((icon) => {
             if (theme === "dark") {
                 icon.src = "https://cdn.simpleicons.org/github/white";
@@ -35,16 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
             metaColorScheme.content = theme;
         }
         document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.setAttribute("data-bs-theme", theme);
+        themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
         if (theme === "dark") {
-            themeIcon.innerHTML = "&#9790;";//Moon icon
-            themeText.textContent = "Dark";
-            themeToggle.classList.remove("btn-outline-secondary");
-            themeToggle.classList.add("btn-outline-light");
+            themeIcon.innerHTML = "&#9788;";// Sun icon
+            themeText.textContent = "Light mode";
+            themeToggle.setAttribute("aria-label", "Switch to light mode");
         } else {
-            themeIcon.innerHTML = "&#9788;";//Sun icon
-            themeText.textContent = "Light";
-            themeToggle.classList.remove("btn-outline-light");
-            themeToggle.classList.add("btn-outline-secondary");
+            themeIcon.innerHTML = "&#9790;";// Moon icon
+            themeText.textContent = "Dark mode";
+            themeToggle.setAttribute("aria-label", "Switch to dark mode");
         }
     }
     // 9.Mobile menu auto close
