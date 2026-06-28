@@ -22,13 +22,13 @@
     --hover-shadow-light: rgba(96, 96, 96, 0.7);
 
     /* Dark mode palette */
-    --bg-color-dark: rgb(22, 22, 22);
-    --bg-surface-dark: rgb(28, 28, 28);
-    --bg-card-dark: rgb(33, 33, 33);
+    --bg-color-dark: rgb(28, 19, 39);
+    --bg-surface-dark: rgb(38, 10, 57);
+    --bg-card-dark: rgb(24, 16, 30);
     --text-color-dark: rgb(232, 232, 232);
-    --text-muted-dark: rgb(166, 166, 166);
+    --text-muted-dark: rgb(215, 198, 206);
     --border-color-dark: rgb(52, 52, 52);
-    --hover-shadow-dark: rgba(0, 0, 0, 0.2);
+    --hover-shadow-dark: rgb(40, 3, 61);
 
     /* Active theme variables — default to light */
     --bg-color: var(--bg-color-light);
@@ -72,11 +72,11 @@
 }
 /* Global Styles */
 html {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     scroll-behavior: smooth;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: var(--bg-color) 0.2s ease, color 0.2s ease;
 }
 
 body {
