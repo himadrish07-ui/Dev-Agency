@@ -5,68 +5,58 @@
     /* Brand colors */
     --primary: rgb(82, 73, 182);
     --success: rgb(29, 158, 117);
-    --danger:  rgb(226, 75, 74);
+    --danger: rgb(226, 75, 74);
     --warning: rgb(239, 159, 39);
-    --info:    rgb(55, 138, 221);
+    --info: rgb(55, 138, 221);
 
     /* Shared values */
     --radius-pill: 20px;
-    --transition:  all 0.2s ease;
+    --transition: all 0.2s ease;
 
     /* Light mode palette */
-    --bg-color-light:   rgb(255, 255, 255);
+    --bg-color-light: rgb(255, 255, 255);
     --bg-surface-light: rgb(247, 247, 245);
-    --bg-card-light:    rgb(255, 255, 255);
+    --bg-card-light: rgb(255, 255, 255);
     --text-color-light: rgb(26, 26, 26);
     --text-muted-light: rgb(102, 102, 102);
     --border-color-light: rgb(224, 224, 224);
     --hover-shadow-light: rgba(96, 96, 96, 0.7);
 
     /* Dark mode palette */
-    --bg-color-dark:   rgb(15, 15, 21);
+    --bg-color-dark: rgb(15, 15, 21);
     --bg-surface-dark: rgb(22, 22, 34);
-    --bg-card-dark:    rgb(30, 30, 45);
+    --bg-card-dark: rgb(30, 30, 45);
     --text-color-dark: rgb(245, 245, 247);
     --text-muted-dark: rgb(160, 160, 171);
     --border-color-dark: rgb(45, 45, 61);
     --hover-shadow-dark: rgba(156, 103, 227, 0.7);
 
     /* Active theme variables — default to light */
-    --bg-color:    var(--bg-color-light);
-    --bg-surface:  var(--bg-surface-light);
-    --bg-card:     var(--bg-card-light);
-    --text-color:  var(--text-color-light);
-    --text-muted:  var(--text-muted-light);
+    --bg-color: var(--bg-color-light);
+    --bg-surface: var(--bg-surface-light);
+    --bg-card: var(--bg-card-light);
+    --text-color: var(--text-color-light);
+    --text-muted: var(--text-muted-light);
     --border-color: var(--border-color-light);
     --hover-shadow: var(--hover-shadow-light);
 }
 
-/* ── Dark Mode: Single Consolidated Override Block ──────────────────────── */
-/* FIX: All dark-mode overrides are now in ONE block instead of two.         */
-/* FIX: Brand colors, component overrides, and Bootstrap vars all together.  */
+/* Dark Mode Roots Override */
 :root[data-theme="dark"] {
-    /* Active theme remapping */
-    --bg-color:    var(--bg-color-dark);
-    --bg-surface:  var(--bg-surface-dark);
-    --bg-card:     var(--bg-card-dark);
-    --text-color:  var(--text-color-dark);
-    --text-muted:  var(--text-muted-dark);
+    --bg-color: var(--bg-color-dark);
+    --bg-surface: var(--bg-surface-dark);
+    --bg-card: var(--bg-card-dark);
+    --text-color: var(--text-color-dark);
+    --text-muted: var(--text-muted-dark);
     --border-color: var(--border-color-dark);
     --hover-shadow: var(--hover-shadow-dark);
 
-    /* Muted brand colors for dark mode */
-    --primary: rgb(157, 153, 198);
-    --success: rgb(132, 165, 150);
-    --danger:  rgb(190, 137, 137);
-    --warning: rgb(190, 158, 109);
-    --info:    rgb(126, 157, 185);
-
-    /* Bootstrap variable overrides */
-    --bs-body-color:      var(--text-color-dark);
-    --bs-body-bg:         var(--bg-color-dark);
+    /* Overriding Bootstrap Dark Mode Variables */
+    --bs-body-color: var(--text-color-dark);
+    --bs-body-bg: var(--bg-color-dark);
     --bs-secondary-color: var(--text-muted-dark);
-    --bs-border-color:    var(--border-color-dark);
-    --bs-emphasis-color:  var(--text-color-dark);
+    --bs-border-color: var(--border-color-dark);
+    --bs-emphasis-color: var(--text-color-dark);
 }
 
 /* ── Global Styles ──────────────────────────────────────────────────────── */
